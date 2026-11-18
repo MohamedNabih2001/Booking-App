@@ -17,7 +17,7 @@ interface PayloadTokenType {
 
 export const refreshTokenCookiesOptions: CookieOptions = {
   httpOnly: true,
-  sameSite: "lax",
+  sameSite: "none",
   secure: process.env.NODE_ENV === "production",
   maxAge: 7 * 24 * 3600 * 1000,
 };
