@@ -127,6 +127,10 @@ export const createReservationHandler = async (
     }
   }
   const uuid = uuidv4();
+  const frontendUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://booking-2grslpcs7-mohamed-nabih1.vercel.app"
+      : "http://localhost:5173";
 
   const lineItems = [
     {
@@ -144,9 +148,9 @@ export const createReservationHandler = async (
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url:
-      "http://localhost:5173/payment/confirm?sessionId={CHECKOUT_SESSION_ID}",
-    cancel_url: "http://localhost:5173/payment/cancel",
+
+    success_url: `${frontendUrl}/payment/confirm?sessionId={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${frontendUrl}/payment/cancel`,
     expires_at: Math.floor(Date.now() / 1000) + 60 * 60,
   });
 
