@@ -129,7 +129,7 @@ export const createReservationHandler = async (
   const uuid = uuidv4();
   const frontendUrl =
     process.env.NODE_ENV === "production"
-      ? "https://booking-2grslpcs7-mohamed-nabih1.vercel.app"
+      ? getEnv("FRONTEND_URL")
       : "http://localhost:5173";
 
   const lineItems = [
